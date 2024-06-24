@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Overview of the Chat With Your Data (Using Azure AI Search) template
 
 This app template showcases how to build one of the most powerful applications enabled by LLM - sophisticated question-answering (Q&A) chat bots that can answer questions about specific source information right in the Microsoft Teams.
@@ -99,3 +100,6 @@ The following are Teams Toolkit specific project files. You can [visit a complet
 ## Known issue
 - If you use `Debug in Test Tool` to local debug, you might get an error `InternalServiceError: connect ECONNREFUSED 127.0.0.1:3978` in Test Tool log. You can wait for Python launch console ready and then refresh the front end web page. 
 - When you use `Launch Remote in Teams` to remote debug after deployment, you might loose interaction with your bot. This is because the remote service needs to restart. Please wait for several minutes to retry it.
+=======
+# Kaggom_FE
+>>>>>>> 914739782583a055cd5970c2c896724adfa85974
