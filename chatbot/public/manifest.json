@@ -13,5 +13,10 @@
       "128": "chatbot_image.png",
       "256": "chatbot_image.png",
       "512": "chatbot_image.png"
-    }
+    },
+  "theme_color": "#202123",
+  "background_color": "#202123",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait"
   }
