@@ -1,5 +1,6 @@
 import React from 'react';
 import './ChatPage.css';
+import Home from "./pages/Home.ts;
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const ChatPage: React.FC = () => {
@@ -8,9 +9,6 @@ const ChatPage: React.FC = () => {
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/auth/kakao" element={<Auth />} />
-                    <Route path="/users" element={<Profile />} />
-                    <Route path="/users/list" element={<List />} />
                 </Routes>
             </BrowserRouter>
         </div>
