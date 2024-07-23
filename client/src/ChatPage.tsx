@@ -1,6 +1,6 @@
 import React from 'react';
 import './ChatPage.css';
-import Home from "./pages/Home.ts;
+import Home from './pages/Home'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const ChatPage: React.FC = () => {
