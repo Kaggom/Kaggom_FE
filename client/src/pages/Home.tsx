@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import SendIcon from "../assets/send.png";
+import { axiosInstance } from '../api/api'
+import { useState } from 'react';
 
 // styled-components를 사용하여 스타일을 정의
 const HomeContainer = styled.div`
@@ -65,8 +67,34 @@ const StyledNavbar = styled(Navbar)`
     z-index: 2; /* Ensure Navbar is above other components */
 `;
 
+const AddName = styled.input`
+    margin-left: 5px;
+    margin-right: 20px;
+    width: 150px;
+    height: 20px;
+`
+
 const Home: React.FC = () => {
     const today = new Date(); // Define `today` variable
+    //const [userId, setUserId] = useState(0);
+    const [chat, setChat] = useState('');
+
+    const sendMessage = async () => {
+        const ChatData = {chat};
+        try {
+            const response = await axiosInstance.post('/chat', ChatData);
+            console.log(response.data);
+            setChat('');
+            alert('등록되었습니다.')
+            
+        } catch (e : any) {
+            if (e.response && e.response.status === 400) {
+                alert('요청 양식을 확인해주세요.')
+            } else {
+                console.error(e);
+            }
+        }
+    };
 
     return (
         <Container>
@@ -78,11 +106,22 @@ const Home: React.FC = () => {
                 {today.toLocaleDateString()}
             </DateText>
             <SendChat>
-                <img src={SendIcon} alt="전송" className="send-icon" />
+                채팅:
+                <AddName 
+                    type='text' 
+                    value={chat} 
+                    onChange={(e) => setChat(e.target.value)}
+                />
+                <img 
+                    src={SendIcon} 
+                    alt="전송" 
+                    className="send-icon" 
+                    onClick={sendMessage} // 메시지 전송 핸들러 추가
+                />
             </SendChat>
         </Container>
     );
-};
+}; 
 
 export default Home;
 
