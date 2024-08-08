@@ -1,4 +1,6 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
+import KaggomChatMessage from './KaggomChatMessage';
+import UserChatMessage from './UserChatMessage';
 import SendMessage from '../../../assets/SendMessage.svg'
 
 function MainChat() {
@@ -40,7 +42,7 @@ function MainChat() {
     return(
         <>
         <div className="relative w-[381px] h-[521px] flex-shrink-1 flex-1 overflow-y-auto bg-white">
-            <div className="relative w-[381px] flex-shrink-1 flex overflow-y-auto items-center justify-center">
+        <div className="relative w-[381px] flex-shrink-1 flex flex-col items-center justify-center">
                     <p className="top-[21px] font-semibold text-center"
                         style={{
                             fontFamily: 'Pretendard',
@@ -50,6 +52,8 @@ function MainChat() {
                         }}>
                         {formattedDate}
                     </p>
+                <KaggomChatMessage />
+                <UserChatMessage />
             </div>
         </div>
 
@@ -60,8 +64,8 @@ function MainChat() {
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="메시지를 입력하세요"
             />
-            <button type="submit" className = "absolute top-[9px] right-[12px]">
-                <svg>{SendMessage}</svg>
+            <button type="submit" className="absolute top-[23px] right-[37px]">
+                <img src={SendMessage} alt="Send" width="27" height="27" />
             </button>
         </form>
         </>
