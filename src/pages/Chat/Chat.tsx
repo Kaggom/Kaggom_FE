@@ -1,21 +1,19 @@
 import MainChat from "./components/MainChat";
-import MainChatMessage from "./components/MainChatMessage";
 import MainHeader from "./components/MainHeader";
 
 function Chat() {
     return (
-        <div className = "relative border-white"
+        <div className = ""
             style={{
                 width: '450px',
-                height: '724px',
-                display: 'flex',
+                height: '100%', // 높이를 화면의 100%로 설정합니다.
+                display: 'flex', // Flexbox 레이아웃을 사용합니다.
                 flexDirection: 'column',
                 border: '1px solid black'
             }}
         >
             <MainHeader />
             <MainChat />
-            <MainChatMessage />
         </div>
 
         );
