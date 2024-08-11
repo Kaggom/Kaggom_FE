@@ -3,7 +3,7 @@ interface UserChatProps {
 }
 // { chat }: KaggomChatProps
 
-function UserChatMessage() {
+const UserChatMessage: React.FC<UserChatProps> = ({ chat }) =>  {
     return (
         <div className="relative h-[63px] w-[380px]">
             <div className="absolute top-[11px] right-[21px] bg-[#E4E1E1] rounded-[20px] px-[12px] py-[8px]"
@@ -21,7 +21,7 @@ function UserChatMessage() {
                         margin: 0, // 기본 margin 제거
                     }}
                 >
-                    오늘 점심 저녁 학식에 대해 알려줘
+                    {chat}
                 </p>
             </div>
         </div>

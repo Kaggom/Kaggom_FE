@@ -1,11 +1,11 @@
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+import React, { useState, FormEvent, useEffect} from 'react';
 import KaggomChatMessage from './KaggomChatMessage';
 import UserChatMessage from './UserChatMessage';
 import SendMessage from '../../../assets/SendMessage.svg'
 
 function MainChat() {
 
-    const [formattedDate, setFormattedDate] = React.useState<string>('');
+    const [formattedDate, setFormattedDate] = useState<string>('');
     const [message, setMessage] = useState<string>('');
     const [messages, setMessages] = useState<string[]>([]);
 
@@ -18,18 +18,10 @@ function MainChat() {
         return `${year}년 ${month}월 ${day}일`;
     };
 
-    React.useEffect(() => {
+    useEffect(() => {
         setFormattedDate(getFormattedDate());
     }, []);
 
-    
-
-    //e의 타입은 ChangeEvent<HTMLTextAreaElement>로 지정
-    //이는 이 함수가 HTML <textarea> 요소에서 발생하는 변경 이벤트를 처리한다는 것을 의미
-    
-    // const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    //     setMessage(e.target.value);
-    // };
 
     const handleSubmit = (e: FormEvent): void => {
         e.preventDefault();
@@ -39,10 +31,11 @@ function MainChat() {
         }
     };
 
+
     return(
         <>
         <div className="relative w-[381px] h-[521px] flex-shrink-1 flex-1 overflow-y-auto bg-white">
-        <div className="relative w-[381px] flex-shrink-1 flex flex-col items-center justify-center">
+            <div className="relative w-[381px] flex-shrink-1 flex flex-col items-center justify-center">
                     <p className="top-[21px] font-semibold text-center"
                         style={{
                             fontFamily: 'Pretendard',
@@ -53,7 +46,9 @@ function MainChat() {
                         {formattedDate}
                     </p>
                 <KaggomChatMessage />
-                <UserChatMessage />
+                {messages.map((msg, index) => (
+                    <UserChatMessage key={index} chat={msg} />
+                ))}
             </div>
         </div>
 
