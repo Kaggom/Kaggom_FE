@@ -32,23 +32,38 @@ function SideBar() {
         <div className="relative w-[72px] top-0 right-0 h-full bg-white shadow-lg flex">
             <nav className="absolute right-[22px] top-[54px] flex flex-col items-center space-y-[20px] mt-4 justify-center">
                 <button onClick={() =>handleChange('chat')}>
-                        <img
-                            src={chat ? ChatClick: Chat}
-                            alt="chat router"
-                        />
-                    </button>
-                    <button onClick={() => handleChange('record')}>
+                    <img
+                        src={chat ? ChatClick: Chat}
+                        alt="chat router"
+                        className="w-[24px] h-[24px]"
+                    />
+                    <p className={chat ? "text-blue text-[8px] font-semibold font-pretendard" : "text-[#909090] text-[8px] font-semibold font-pretendard"}>
+                        채팅
+                    </p>
+                </button>
+
+                <button onClick={() => handleChange('record')}>
                     <img
                         src={record ? RecordClick : Record}
                         alt="record router"
+                        className="w-[24px] h-[24px]" 
                     />
+                    <p className={record ? "text-blue text-[8px] font-semibold font-pretendard" : "text-[#909090] text-[8px] font-semibold font-pretendard"}>
+                        이전기록
+                    </p>
                 </button>
+
                 <button onClick={() => handleChange('user')}>
                     <img
                         src={user ? UserClick : User}
                         alt="user router"
+                        className="w-[24px] h-[24px]" 
                     />
+                    <p className={user ? "text-blue text-[8px] font-semibold font-pretendard" : "text-[#909090] text-[8px] font-semibold font-pretendard"}>
+                        개인정보
+                    </p>
                 </button>
+
             </nav>
 
         </div>
