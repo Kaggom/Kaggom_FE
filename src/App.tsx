@@ -1,8 +1,9 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import './App.css';
 import Main from './pages/Main';
 import Chat from './pages/Chat/Chat';
 import SideBar from './components/SideBar';
+import Login from './pages/Login/Login';
 
 function App() {
   return (
@@ -12,10 +13,11 @@ function App() {
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/chat" element={<Chat />} />
+            <Route path="/login" element={<Login />} />
             {/* 다른 라우트 추가 */}
           </Routes>
         </main>
-        <SideBar />
+        {location.pathname !== '/login' && location.pathname !== '/' && <SideBar />}
       </div>
     </BrowserRouter>
   );
