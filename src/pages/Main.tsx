@@ -5,7 +5,7 @@ import Login from "./Login/Login";
 function Main() {
     return (
         <>
-        <Login />
+        <Chat />
         </>
     );
 }

@@ -4,6 +4,7 @@ import Main from './pages/Main';
 import Chat from './pages/Chat/Chat';
 import SideBar from './components/SideBar';
 import Login from './pages/Login/Login';
+import Onboard from './pages/Onboard/Onboard';
 
 function App() {
   return (
@@ -14,10 +15,11 @@ function App() {
             <Route path="/" element={<Main />} />
             <Route path="/chat" element={<Chat />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/onboard" element={<Onboard />} />
             {/* 다른 라우트 추가 */}
           </Routes>
         </main>
-        {location.pathname !== '/login' && location.pathname !== '/' && <SideBar />}
+        {location.pathname !== '/login' && location.pathname !== '/onboard' && <SideBar />}
       </div>
     </BrowserRouter>
   );
