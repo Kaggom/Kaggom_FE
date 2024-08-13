@@ -2,15 +2,18 @@ import { useState } from "react";
 import DropDown from "../../../assets/Login&Onboard/Drop.svg"
 import {styled} from "styled-components";
 
+interface MajorDropDownProps {
+    selectedMajor: string;
+    onMajorChange: (major: string) => void;
+}
 
-function MajorDropDown(){
-    const [major, setMajor] = useState<string>('');
+function MajorDropDown({ selectedMajor, onMajorChange }: MajorDropDownProps){
     const [isOpen, setIsOpen] = useState(false);
 
     const onToggle = () => setIsOpen(!isOpen);
 
-    const onOptionClicked = (value: string, index: number) => () => {
-        setMajor(value);  // 선택된 카테고리 값 업데이트
+    const onOptionClicked = (value: string) => () => {
+        onMajorChange(value); // 부모 컴포넌트의 상태 업데이트 함수 호출
         setIsOpen(false);
     };
 
@@ -19,7 +22,7 @@ function MajorDropDown(){
         <div className="fixed w-[255px] h-[37px] top-[230px] left-[655px] rounded-[5px] border-[2px] border-blue bg-white resize-none">
             <textarea
                 className="absolute w-[214px] h-[21px] top-[5px] left-[13px] text-black font-pretendard font-semibold resize-none overflow-hidden"
-                value={major}
+                value={selectedMajor}
                 placeholder="ex) 컴퓨터공학과"
             />
             <button  onClick={onToggle} className="absolute top-[9.77px] right-[8.3px]">
@@ -30,12 +33,41 @@ function MajorDropDown(){
         <div className="fixed top-[265px] left-[655px] inline-block z-50">
                 {isOpen && (
                 <div className="h-[217px] w-[255px] inline-block mr-2 overflow-y-scroll border-[2px] border-blue rounded-[5px] bg-white">
-                    <ListItem onClick={onOptionClicked("발라드", 1)}>발라드</ListItem>
-                    <ListItem onClick={onOptionClicked("알앤비", 2)}>알앤비</ListItem>
-                    <ListItem onClick={onOptionClicked("랩", 3)}>랩</ListItem>
-                    <ListItem onClick={onOptionClicked("락", 4)}>락</ListItem>
-                    <ListItem onClick={onOptionClicked("트로트", 5)}>트로트</ListItem>
-                    <ListItem onClick={onOptionClicked("인디", 6)}>인디</ListItem>
+                    <ListItem onClick={onOptionClicked("동양화")}>동양화</ListItem>
+                    <ListItem onClick={onOptionClicked("회화과")}>회화과</ListItem>
+                    <ListItem onClick={onOptionClicked("예술학과")}>예술학과</ListItem>
+                    <ListItem onClick={onOptionClicked("판화과")}>판화과</ListItem>
+                    <ListItem onClick={onOptionClicked("조소과")}>조소과</ListItem>
+                    <ListItem onClick={onOptionClicked("시각디자인전공")}>시각디자인전공</ListItem>
+                    <ListItem onClick={onOptionClicked("산업디자인전공")}>산업디자인전공</ListItem>
+                    <ListItem onClick={onOptionClicked("금속조형디자인과")}>금속조형디자인과</ListItem>
+                    <ListItem onClick={onOptionClicked("도예유리과")}>도예유리과</ListItem>
+                    <ListItem onClick={onOptionClicked("목조형가구학과")}>목조형가구학과</ListItem>
+                    <ListItem onClick={onOptionClicked("섬유미술패션디자인과")}>섬유미술패션디자인과</ListItem>
+                    <ListItem onClick={onOptionClicked("디자인 예술경영학부")}>디자인 예술경영학부</ListItem>
+                    <ListItem onClick={onOptionClicked("자율전공")}>자율전공</ListItem>
+                    <ListItem onClick={onOptionClicked("경영학부")}>경영학부</ListItem>
+                    <ListItem onClick={onOptionClicked("건축학과")}>건축학과</ListItem>
+                    <ListItem onClick={onOptionClicked("도시공학과")}>도시공학과</ListItem>
+                    <ListItem onClick={onOptionClicked("전자전기공학부")}>전자전기공학부</ListItem>
+                    <ListItem onClick={onOptionClicked("신소재공학전공")}>신소재공학전공</ListItem>
+                    <ListItem onClick={onOptionClicked("화학공학전공")}>화학공학전공</ListItem>
+                    <ListItem onClick={onOptionClicked("컴퓨터공학과")}>컴퓨터공학과</ListItem>
+                    <ListItem onClick={onOptionClicked("산업데이터공학과")}>산업데이터공학과</ListItem>
+                    <ListItem onClick={onOptionClicked("기계시스템디자인공학과")}>기계시스템디자인공학과</ListItem>
+                    <ListItem onClick={onOptionClicked("영어영문학과")}>영어영문학과</ListItem>
+                    <ListItem onClick={onOptionClicked("불어불문학과")}>불어불문학과</ListItem>
+                    <ListItem onClick={onOptionClicked("독어독문학과")}>독어독문학과</ListItem>
+                    <ListItem onClick={onOptionClicked("국어국문학과")}>국어국문학과</ListItem>
+                    <ListItem onClick={onOptionClicked("수학교육과")}>수학교육과</ListItem>
+                    <ListItem onClick={onOptionClicked("국어교육과")}>국어교육과</ListItem>
+                    <ListItem onClick={onOptionClicked("영어교육과")}>영어교육과</ListItem>
+                    <ListItem onClick={onOptionClicked("역사교육과")}>역사교육과</ListItem>
+                    <ListItem onClick={onOptionClicked("교육학과")}>교육학과</ListItem>
+                    <ListItem onClick={onOptionClicked("경제학부")}>경제학부</ListItem>
+                    <ListItem onClick={onOptionClicked("공연예술학부")}>공연예술학부</ListItem>
+                    <ListItem onClick={onOptionClicked("문화예술경영학과")}>문화예술경영학과</ListItem>
+                    <ListItem onClick={onOptionClicked("디자인엔지니어링")}>디자인엔지니어링</ListItem>
                 </div>
             )}
         </div>
