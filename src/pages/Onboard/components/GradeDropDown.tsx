@@ -4,30 +4,30 @@ import {styled} from "styled-components";
 
 
 function GradeDropDown(){
-    const [major, setMajor] = useState<string>('');
+    const [grade, setGrade] = useState<string>('');
     const [isOpen, setIsOpen] = useState(false);
 
     const onToggle = () => setIsOpen(!isOpen);
 
     const onOptionClicked = (value: string, index: number) => () => {
-        setMajor(value);  // 선택된 카테고리 값 업데이트
+        setGrade(value);  // 선택된 카테고리 값 업데이트
         setIsOpen(false);
     };
 
     return (
     <>
-        <div className="relative w-[255px] h-[37px] top-[281px] left-[105px] rounded-[5px] border-[2px] border-blue bg-white resize-none">
+        <div className="fixed w-[255px] h-[37px] top-[286px] left-[655px] rounded-[5px] border-[2px] border-blue bg-white resize-none z-40">
             <textarea
-                className="absolute w-[214px] h-[21px] top-[5px] left-[13px] text-black font-pretendard font-semibold resize-none"
-                value={major}
-                placeholder="ex) 컴퓨터공학과"
+                className="absolute w-[214px] h-[21px] top-[5px] left-[13px] text-black font-pretendard font-semibold resize-none overflow-hidden"
+                value={grade}
+                placeholder="ex) 1"
             />
             <button  onClick={onToggle} className="absolute top-[9.77px] right-[8.3px]">
                 <img src={DropDown} alt="드롭다운메뉴" />
             </button>
         </div>
 
-        <div className="relative top-[279px] left-[105px] inline-block h-[217px] w-[255px]">
+        <div className="fixed top-[321px] left-[655px] inline-block h-[217px] w-[255px] z-40">
                 {isOpen && (
                 <div className="w-[100%] h-[100%] inline-block mr-2 overflow-y-scroll border-[2px] border-blue rounded-[5px] bg-white">
                     <ListItem onClick={onOptionClicked("발라드", 1)}>발라드</ListItem>
@@ -65,5 +65,10 @@ const ListItem = styled.li`
 
     &:last-child {
         border-bottom: none; // 마지막 항목의 하단 구분선 제거
+    }
+
+    &:hover {
+        background-color: #f1f5f9; /* Tailwind의 gray-100 */
+        color: #1f2937; /* Tailwind의 gray-800 */
     }
 `;
