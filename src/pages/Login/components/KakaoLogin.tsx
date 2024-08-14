@@ -1,5 +1,5 @@
 import KaggomLogo from "../../../assets/KaggomLogo.svg"
-import KakaoLoginImage from "../../../assets/kakao_login.png"
+import KakaoLoginImage from "../../../assets/Login&Onboard/kakao_login.png"
 
 function KakaoLogin() {
     return (

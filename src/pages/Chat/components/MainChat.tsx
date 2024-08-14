@@ -1,7 +1,7 @@
 import React, { useState, FormEvent, useEffect} from 'react';
 import KaggomChatMessage from './KaggomChatMessage';
 import UserChatMessage from './UserChatMessage';
-import SendMessage from '../../../assets/SendMessage.svg'
+import SendMessage from '../../../assets/Chat/SendMessage.svg'
 
 function MainChat() {
 
