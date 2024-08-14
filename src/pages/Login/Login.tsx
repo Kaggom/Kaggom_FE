@@ -1,4 +1,4 @@
-import KakaoLogin from "./components/KakaoLogin";
+import KakaoGoogleLogin from "./components/Login";
 
 function Login() {
     return (
@@ -11,7 +11,7 @@ function Login() {
                     // border: '1px solid black'
                 }}
             >
-                <KakaoLogin />
+                <KakaoGoogleLogin />
             </div>
         );
 }
