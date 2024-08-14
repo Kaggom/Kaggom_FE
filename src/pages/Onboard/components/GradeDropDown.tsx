@@ -20,7 +20,7 @@ function GradeDropDown({ selectedGrade, onGradeChange }: GradeDropDownProps){
 
     return (
     <>
-        <div className="fixed w-[255px] h-[37px] top-[286px] left-[655px] rounded-[5px] border-[2px] border-blue bg-white resize-none z-40">
+        <div className="absolute w-[255px] h-[37px] top-[286px] left-[123px] rounded-[5px] border-[2px] border-blue bg-white resize-none z-40">
             <textarea
                 className="absolute w-[214px] h-[21px] top-[5px] left-[13px] text-black font-pretendard font-semibold resize-none overflow-hidden"
                 value={selectedGrade}
@@ -31,7 +31,7 @@ function GradeDropDown({ selectedGrade, onGradeChange }: GradeDropDownProps){
             </button>
         </div>
 
-        <div className="fixed top-[321px] left-[655px] inline-block h-[217px] w-[255px] z-40">
+        <div className="absolute top-[321px] left-[123px] inline-block h-[217px] w-[255px] z-40">
                 {isOpen && (
                 <div className="w-[100%] h-[100%] inline-block mr-2 overflow-y-scroll border-[2px] border-blue rounded-[5px] bg-white">
                     <ListItem onClick={onOptionClicked("1학년")}>1학년</ListItem>
@@ -40,6 +40,7 @@ function GradeDropDown({ selectedGrade, onGradeChange }: GradeDropDownProps){
                     <ListItem onClick={onOptionClicked("4학년")}>4학년</ListItem>
                     <ListItem onClick={onOptionClicked("5학년")}>5학년</ListItem>
                     <ListItem onClick={onOptionClicked("6학년")}>6학년</ListItem>
+                    <ListItem onClick={onOptionClicked("6학년")}>대학원생</ListItem>
                 </div>
             )}
         </div>

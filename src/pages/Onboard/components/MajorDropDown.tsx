@@ -19,7 +19,7 @@ function MajorDropDown({ selectedMajor, onMajorChange }: MajorDropDownProps){
 
     return (
     <>
-        <div className="fixed w-[255px] h-[37px] top-[230px] left-[655px] rounded-[5px] border-[2px] border-blue bg-white resize-none">
+        <div className="absolute w-[255px] h-[37px] top-[230px] left-[123px] rounded-[5px] border-[2px] border-blue bg-white resize-none">
             <textarea
                 className="absolute w-[214px] h-[21px] top-[5px] left-[13px] text-black font-pretendard font-semibold resize-none overflow-hidden"
                 value={selectedMajor}
@@ -30,7 +30,7 @@ function MajorDropDown({ selectedMajor, onMajorChange }: MajorDropDownProps){
             </button>
         </div>
 
-        <div className="fixed top-[265px] left-[655px] inline-block z-50">
+        <div className="absolute top-[265px] left-[123px] inline-block z-50">
                 {isOpen && (
                 <div className="h-[217px] w-[255px] inline-block mr-2 overflow-y-scroll border-[2px] border-blue rounded-[5px] bg-white">
                     <ListItem onClick={onOptionClicked("동양화")}>동양화</ListItem>
