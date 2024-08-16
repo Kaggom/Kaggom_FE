@@ -25,7 +25,7 @@ const InterestButton = ({interest, onInterestChange}:Props) => {
                 isClicked ? 'bg-[#C6CFED] text-[#616573]' : 'bg-blue text-white'
             }`}
         >
-            {interest}
+            <p>{interest}</p>
         </button>
     );
 }
