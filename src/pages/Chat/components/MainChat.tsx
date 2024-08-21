@@ -2,8 +2,12 @@ import React, { useState, FormEvent, useEffect} from 'react';
 import KaggomChatMessage from './KaggomChatMessage';
 import UserChatMessage from './UserChatMessage';
 import SendMessage from '../../../assets/Chat/SendMessage.svg'
+import axios from 'axios';
 
 function MainChat() {
+
+    const AZURE_ACCESS_KEY = import.meta.env.VITE_AZURE_ACCESS_KEY;
+    const AZURE_END_POINT = import.meta.env.VITE_AZURE_END_POINT;
 
     const [formattedDate, setFormattedDate] = useState<string>('');
     const [message, setMessage] = useState<string>('');
@@ -20,8 +24,39 @@ function MainChat() {
 
     useEffect(() => {
         setFormattedDate(getFormattedDate());
+        chatStartApi();
     }, []);
 
+    console.log('API Key:', AZURE_ACCESS_KEY);
+
+
+
+    const chatStartApi = async () => {
+        try {
+            const response = await axios.post('/api',
+            {
+                body: {
+                    'topic': 'Lunch',
+                }
+            },
+            {
+                headers: {
+                    'Authorization': `Bearer ${AZURE_ACCESS_KEY}`,
+                }
+            }
+        );
+            console.log("chatStartApi response: ", response.data.onboarding);
+            return;
+        } catch (error) {
+            if (error instanceof Error) {
+                console.error('에러 메시지:', error.message);
+            } else {
+                console.error('알 수 없는 에러 발생:', error);
+            }
+            console.error("API 요청 중 오류 발생:", error);
+            return null; // 에러 발생 시 null 반환
+        }
+    }
 
     const handleSubmit = (e: FormEvent): void => {
         e.preventDefault();

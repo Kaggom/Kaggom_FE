@@ -6,6 +6,8 @@ import SideBar from './components/SideBar';
 import Login from './pages/Login/Login';
 import Onboard from './pages/Onboard/Onboard';
 import User from './pages/User/User';
+import Record from './pages/Record/Record';
+import UserEdit from './pages/UserEdit/UserEdit';
 
 function App() {
   return (
@@ -18,7 +20,8 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/onboard" element={<Onboard />} />
             <Route path="/user" element={<User />} />
-            {/* <Route path="/user/edit" element={UserEdit />} /> */}
+            <Route path="/user/edit" element={<UserEdit />} />
+            <Route path="/record" element={<Record />} />
             {/* 다른 라우트 추가 */}
           </Routes>
         </main>
