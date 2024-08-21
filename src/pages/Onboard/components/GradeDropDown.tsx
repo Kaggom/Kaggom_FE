@@ -31,9 +31,9 @@ function GradeDropDown({ selectedGrade, onGradeChange }: GradeDropDownProps){
             </button>
         </div>
 
-        <div className="absolute top-[321px] left-[123px] inline-block h-[217px] w-[255px] z-40">
+        {isOpen && <div className="absolute top-[321px] left-[123px] inline-block h-[217px] w-[255px] z-50">
                 {isOpen && (
-                <div className="w-[100%] h-[100%] inline-block mr-2 overflow-y-scroll border-[2px] border-blue rounded-[5px] bg-white">
+                <div className="w-[100%] h-[100%] inline-block mr-2 overflow-y-scroll border-[2px] border-blue rounded-[5px] bg-white ">
                     <ListItem onClick={onOptionClicked("1학년")}>1학년</ListItem>
                     <ListItem onClick={onOptionClicked("2학년")}>2학년</ListItem>
                     <ListItem onClick={onOptionClicked("3학년")}>3학년</ListItem>
@@ -44,6 +44,7 @@ function GradeDropDown({ selectedGrade, onGradeChange }: GradeDropDownProps){
                 </div>
             )}
         </div>
+    }
 
     </>
     );
