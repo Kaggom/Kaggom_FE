@@ -2,15 +2,47 @@ import Header from "./Header";
 import Profile from "../../../assets/User/profile.webp"
 import { Link } from "react-router-dom";
 import UserInterest from "./UserInterest";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Plus from "../../../assets/User/plus.svg";
 
 
 const UserDetail = () => {
-    const interests = ['유학', '동아리', '공모전', '장학금', '봉사활동', '졸업', '휴학', '행사'];
+    const interests = ['유학', '동아리', '공모전'];
     const [major, setMajor] = useState<string>('컴퓨터공학과');
     const [doubleMajor, setdoubleMajor] = useState<string>('경영학부 경영학과');
     const [minor, setMinor] = useState<string>('국어교육과');
-    const [interest, setInterest] = useState<string[]>([]);
+    const [interest, setInterest] = useState<string[]>(interests);
+    const [onToggle, setOnToggle] = useState<boolean>(false);
+    const [newInterest, setNewInterest] = useState<string>('');
+
+    const saveInterest = () => {
+        if (newInterest.trim() !== '') {
+            setInterest([...interest, newInterest]);
+            setNewInterest(''); // Clear the input field
+        }
+        else {
+            setOnToggle(false)
+        }
+    };
+
+
+
+    const handleToggle = () => {
+        if (onToggle == true){
+            saveInterest()
+        }
+        else{
+            setOnToggle(false)
+        }
+
+        setOnToggle(!ontoggle)
+        
+    }
+
+    const cancelInterest = (interestValue:string) => {
+        const updatedInterests = interest.filter((interest) => interest !== interestValue);
+        setInterest(updatedInterests);
+    }
 
     return (
         <div className=" w-[381px] h-[100%] bg-gradient-to-b from-white to-[#EDF1F6] flex flex-col">
@@ -50,7 +82,7 @@ const UserDetail = () => {
                     주전공
                     <div className="flex items-center justify-center mr-[22px] w-[126px] h-[28px] rounded-[10px] bg-[#E4E1E1]">
                         <input
-                        className="flex h-[18px] w-[100px] font-pretendard font-medium text-[15px] text-black bg-transparent"
+                        className="flex h-[18px] w-[100px] font-pretendard font-medium text-[15px] text-[#6B6B6B] bg-transparent"
                         value={major}
                         onChange={(e) => setMajor(e.target.value)}
                         />
@@ -61,7 +93,7 @@ const UserDetail = () => {
                     복수전공
                     <div className="flex items-center justify-center mr-[22px] w-[126px] h-[28px] rounded-[10px] bg-[#E4E1E1]">
                         <input
-                        className="flex h-[18px] w-[100px] font-pretendard font-medium text-[15px] text-black bg-transparent"
+                        className="flex h-[18px] w-[100px] font-pretendard font-medium text-[15px] text-[#6B6B6B] bg-transparent"
                         value={doubleMajor}
                         onChange={(e) => setdoubleMajor(e.target.value)}
                         />
@@ -71,7 +103,7 @@ const UserDetail = () => {
                     부전공
                     <div className="flex items-center justify-center mr-[22px] w-[126px] h-[28px] rounded-[10px] bg-[#E4E1E1]">
                         <input
-                        className="flex h-[18px] w-[100px] font-pretendard font-medium text-[15px] text-black bg-transparent"
+                        className="flex h-[18px] w-[100px] font-pretendard font-medium text-[15px] text-[#6B6B6B] bg-transparent"
                         value={minor}
                         onChange={(e) => setMinor(e.target.value)}
                         />
@@ -83,14 +115,33 @@ const UserDetail = () => {
             <div className="flex flex-col">
                 <h2 className="flex mt-[6px] ml-[28px] font-pretendard font-bold text-[20px] text-black">
                     관심키워드
-                </h2>                    
+                </h2>            
                 <div className="flex mt-[8px] flex-wrap mr-[28px] ml-[28px] gap-[10px]">
-                    {interests.map((data, index) => (
+                    {interest.map((data, index) => (
                         <UserInterest
                             key={index}
                             interest={data}
+                            cancelInterest={cancelInterest}
                         />
                     ))}
+
+                    {interest.length < 5 && onToggle &&
+                    <div className="flex ml-[10px] w-[100px] h-[34px] rounded-[100px] font-pretendard font-semibold text-[15px] 
+                    bg-[#E4E1E1] text-[#6B6B6B] items-center justify-center px-[19px] py-[8px]"
+                    >
+                        <input
+                        className="flex h-[18px] w-[80px] font-pretendard font-medium text-[15px] text-[#6B6B6B] bg-transparent"
+                        value={newInterest}
+                        onChange={(e) => setNewInterest(e.target.value)}
+                        />
+                    </div>
+                    }
+
+
+                    {interest.length < 5 &&
+                        <button onClick={handleToggle} className="ml-[5px]">
+                            <img src = {Plus} alt = "plus" className="w-[22px] h-[22px]" />
+                        </button>}
                 </div>
             </div>
 
