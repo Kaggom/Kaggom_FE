@@ -1,8 +1,8 @@
 import Header from "./Header";
 import Profile from "../../../assets/User/profile.webp"
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import UserInterest from "./UserInterest";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Plus from "../../../assets/User/plus.svg";
 
 

@@ -1,9 +1,9 @@
 import Kaggom from '../../../assets/Kaggom.svg'
 
 
-interface KaggomChatProps {
-    chat: string; // 'Text' 대신 'string' 타입 사용
-}
+// interface KaggomChatProps {
+//     chat: string; // 'Text' 대신 'string' 타입 사용
+// }
 // { chat }: KaggomChatProps
 
 function KaggomChatMessage() {

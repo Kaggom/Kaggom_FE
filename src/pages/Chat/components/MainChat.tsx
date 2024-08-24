@@ -1,4 +1,4 @@
-import React, { useState, FormEvent, useEffect} from 'react';
+import { useState, FormEvent, useEffect} from 'react';
 import KaggomChatMessage from './KaggomChatMessage';
 import UserChatMessage from './UserChatMessage';
 import SendMessage from '../../../assets/Chat/SendMessage.svg'
@@ -7,7 +7,7 @@ import axios from 'axios';
 function MainChat() {
 
     const AZURE_ACCESS_KEY = import.meta.env.VITE_AZURE_ACCESS_KEY;
-    const AZURE_END_POINT = import.meta.env.VITE_AZURE_END_POINT;
+    // const AZURE_END_POINT = import.meta.env.VITE_AZURE_END_POINT;
 
     const [formattedDate, setFormattedDate] = useState<string>('');
     const [message, setMessage] = useState<string>('');
