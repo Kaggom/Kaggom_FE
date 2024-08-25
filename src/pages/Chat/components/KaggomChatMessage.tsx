@@ -1,12 +1,12 @@
 import Kaggom from '../../../assets/Kaggom.svg'
 
 
-// interface KaggomChatProps {
-//     chat: string; // 'Text' 대신 'string' 타입 사용
-// }
+interface KaggomChatProps {
+    chat: string; // 'Text' 대신 'string' 타입 사용
+}
 // { chat }: KaggomChatProps
 
-function KaggomChatMessage() {
+const KaggomChatMessage = ({chat}:KaggomChatProps)=>{
     return (
         <div className="relative h-[63px] w-[380px]">
             <img 
@@ -29,7 +29,7 @@ function KaggomChatMessage() {
                         margin: 0, // 기본 margin 제거
                     }}
                 >
-                    안녕하세요 학사정보챗봇 KAGGOM 입니다!
+                    {chat}
                 </p>
             </div>
         </div>

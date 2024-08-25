@@ -11,7 +11,7 @@ function MainChat() {
 
     const [formattedDate, setFormattedDate] = useState<string>('');
     const [message, setMessage] = useState<string>('');
-    const [messages, setMessages] = useState<string[]>([]);
+    const [messages, setMessages] = useState<{ type: 'user' | 'bot'; text: string }[]>([]);
 
     const getFormattedDate = (): string => {
         const today = new Date();
@@ -24,28 +24,28 @@ function MainChat() {
 
     useEffect(() => {
         setFormattedDate(getFormattedDate());
-        chatStartApi();
     }, []);
 
     console.log('API Key:', AZURE_ACCESS_KEY);
 
 
 
-    const chatStartApi = async () => {
+    const chatStartApi = async (message:string) => {
         try {
-            const response = await axios.post('/api',
+            const response = await axios.post('http://20.41.121.150:8000/search',
             {
                 body: {
-                    'topic': 'Lunch',
+                    'text': `${message}`,
                 }
             },
-            {
-                headers: {
-                    'Authorization': `Bearer ${AZURE_ACCESS_KEY}`,
-                }
-            }
+            // {
+            //     headers: {
+            //         'Authorization': `Bearer ${AZURE_ACCESS_KEY}`,
+            //     }
+            // }
         );
-            console.log("chatStartApi response: ", response.data.onboarding);
+            console.log("chatStartApi response: ", response.data);
+            handleChatMessage({ type: 'bot', text: `${response.data}` });
             return;
         } catch (error) {
             if (error instanceof Error) {
@@ -61,10 +61,16 @@ function MainChat() {
     const handleSubmit = (e: FormEvent): void => {
         e.preventDefault();
         if (message.trim()) {
-            setMessages([...messages, message]);
-            setMessage('');
+            handleChatMessage({ type: 'user', text: message }); 
+            setMessage(''); // 입력창 비우기
         }
     };
+
+    const handleChatMessage = (message:{ type: "bot" | "user"; text: string }) => {
+        setMessages((prevState) => {
+            return [...prevState, message];
+        });
+    }
 
 
     return(
@@ -80,9 +86,11 @@ function MainChat() {
                         }}>
                         {formattedDate}
                     </p>
-                <KaggomChatMessage />
+                <KaggomChatMessage chat = "안녕하세요 학사정보챗봇 KAGGOM 입니다!"/>
                 {messages.map((msg, index) => (
-                    <UserChatMessage key={index} chat={msg} />
+                msg.type === 'user' ? 
+                    <UserChatMessage key={index} chat={msg.text} /> :
+                    <KaggomChatMessage key={index} chat={msg.text} />
                 ))}
             </div>
         </div>
@@ -94,7 +102,8 @@ function MainChat() {
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="메시지를 입력하세요"
             />
-            <button type="submit" className="absolute top-[23px] right-[37px]">
+            <button onClick={() => chatStartApi(message)}
+                    type="submit" className="absolute top-[23px] right-[37px]">
                 <img src={SendMessage} alt="Send" width="27" height="27" />
             </button>
         </form>
