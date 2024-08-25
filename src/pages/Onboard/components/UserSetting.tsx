@@ -2,6 +2,7 @@ import { useState } from "react";
 import MajorDropDown from "./MajorDropDown";
 import GradeDropDown from "./GradeDropDown";
 import InterestButton from "./InterestButton";
+import { useNavigate } from "react-router-dom";
 
 function UserSetting() {
     const interests = ['유학', '동아리', '공모전', '장학금', '봉사활동', '졸업', '휴학', '행사'];
@@ -9,6 +10,7 @@ function UserSetting() {
     const [major, setMajor] = useState<string>('');
     const [grade, setGrade] = useState<string>('');
     const [interest, setInterest] = useState<string[]>([]);
+    const navigate = useNavigate();
 
     // MajorDropDown에서 선택된 값을 설정하는 함수
     const handleMajorChange = (selectedMajor: string) => {
@@ -33,6 +35,16 @@ function UserSetting() {
             }
         });
     };
+
+    const handleNavChat = () => {
+        const isValid = major && grade && interest;
+        if (!isValid) {
+            alert("필수 정보를 모두 입력해주세요.");
+            return;
+        }
+
+        navigate('/chat');
+    }
 
     console.log(interest)
 
@@ -66,7 +78,8 @@ function UserSetting() {
                 ))}
             </div>
 
-            <button className="absolute top-[625px] left-[62px] w-[326px] h-[48px] rounded-[100px] bg-blue 
+            <button onClick={handleNavChat}
+                    className="absolute top-[625px] left-[62px] w-[326px] h-[48px] rounded-[100px] bg-blue 
                     font-semibold text-[25px] font-pretendard text-white justify-center items-center">
                 마치기
             </button>

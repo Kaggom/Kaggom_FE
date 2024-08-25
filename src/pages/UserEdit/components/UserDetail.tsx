@@ -4,6 +4,7 @@ import Profile from "../../../assets/User/profile.webp"
 import UserInterest from "./UserInterest";
 import { useState } from "react";
 import Plus from "../../../assets/User/plus.svg";
+import { useNavigate } from "react-router-dom";
 
 
 const UserDetail = () => {
@@ -14,6 +15,7 @@ const UserDetail = () => {
     const [interest, setInterest] = useState<string[]>(interests);
     const [onToggle, setOnToggle] = useState<boolean>(false);
     const [newInterest, setNewInterest] = useState<string>('');
+    const navigate = useNavigate();
 
     const saveInterest = () => {
         if (newInterest.trim() !== '') {
@@ -37,6 +39,10 @@ const UserDetail = () => {
 
         setOnToggle(!ontoggle)
         
+    }
+
+    const handleNavUser = () => {
+        navigate('/user');
     }
 
     const cancelInterest = (interestValue:string) => {
@@ -145,7 +151,7 @@ const UserDetail = () => {
                 </div>
             </div>
 
-            <button
+            <button onClick={handleNavUser}
                 className="flex mt-[30px] ml-[259px] w-[97px] h-[30px] rounded-[20px] bg-[#BCBCBC] justify-center items-center cursor-pointer hover:bg-[#D7E1F9]"
                 style={{
                     boxShadow: '0px 2px 4px 0px rgba(0, 0, 0, 0.1)',
