@@ -2,7 +2,7 @@ import UserSetting from "./components/UserSetting";
 
 function Onboard() {
     return (
-            <div className = "absolute"
+            <div className = "absolute flex-auto"
                 style={{
                     width: '450px',
                     height: '100%', // 높이를 화면의 100%로 설정합니다.

@@ -11,7 +11,7 @@ function Chat() {
         //         justifyContent: 'center',
         //     }}
         // >
-            <div className = "absolute"
+            <div className = "absolute flex-auto"
                 style={{
                     width: '381px',
                     height: '100%', // 높이를 화면의 100%로 설정합니다.
