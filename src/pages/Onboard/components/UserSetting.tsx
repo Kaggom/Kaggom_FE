@@ -48,27 +48,31 @@ function UserSetting() {
 
     console.log(interest)
 
-    return(
-        <div className = "relative w-full h-screen bg-[#E3EEFD]">
-            <h1 className = "absolute top-[166px] font-semibold text-[25px] font-pretendard text-black left-1/2 transform -translate-x-1/2 flex items-center whitespace-nowrap">
+    return (
+        <div className="flex flex-col justify-center items-center w-full h-screen bg-[#E3EEFD]">
+            <h1 className="font-semibold text-[25px] font-pretendard text-black mb-6">
                 학과와 학년 정보를 기입해주세요.
             </h1>
-            <h2 className = "absolute top-[233px] left-[56px] font-semibold text-[20px] font-pretendard text-black">
-                학과
-            </h2>
-            <MajorDropDown selectedMajor={major} onMajorChange={handleMajorChange} />
-
-            <h2 className = "absolute top-[289px] left-[56px] font-semibold text-[20px] font-pretendard text-black">
-                학년
-            </h2>
-            <GradeDropDown selectedGrade={grade} onGradeChange={handleGradeChange} />
-            <div className="absolute top-[391px] left-1/2 transform -translate-x-1/2 flex items-center justify-center w-full">
-                <h2 className="font-semibold text-[18px] font-pretendard text-black">
-                    학과공지에서 관심있는 키워드를 모두 선택해주세요.
+            
+            <div className="flex flex-col items-start mb-6 w-full max-w-md px-6">
+                <h2 className="font-semibold text-[20px] font-pretendard text-black mb-2">
+                    학과
                 </h2>
+                <MajorDropDown selectedMajor={major} onMajorChange={handleMajorChange} />
             </div>
 
-            <div className="relative top-[419px] flex flex-wrap mt-[35px] mr-[28px] ml-[28px] mb-[35px] gap-[15px]">
+            <div className="flex flex-col items-start mb-6 w-full max-w-md px-6">
+                <h2 className="font-semibold text-[20px] font-pretendard text-black mb-2">
+                    학년
+                </h2>
+                <GradeDropDown selectedGrade={grade} onGradeChange={handleGradeChange} />
+            </div>
+
+            <h2 className="font-semibold text-[18px] font-pretendard text-black mb-4">
+                학과공지에서 관심있는 키워드를 모두 선택해주세요.
+            </h2>
+
+            <div className="flex flex-wrap justify-center gap-[15px] mb-6 w-full max-w-md px-6">
                 {interests.map((data, index) => (
                     <InterestButton
                         key={index}
@@ -78,16 +82,12 @@ function UserSetting() {
                 ))}
             </div>
 
-            <button onClick={handleNavChat}
-                    className="absolute top-[625px] left-[62px] w-[326px] h-[48px] rounded-[100px] bg-blue 
-                    font-semibold text-[25px] font-pretendard text-white justify-center items-center">
+            <button
+                onClick={handleNavChat}
+                className="w-[326px] h-[48px] rounded-[100px] bg-blue font-semibold text-[25px] font-pretendard text-white flex justify-center items-center">
                 마치기
             </button>
         </div>
-
-
-
-
     );
 }
 

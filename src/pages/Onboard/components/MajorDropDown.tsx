@@ -19,11 +19,12 @@ function MajorDropDown({ selectedMajor, onMajorChange }: MajorDropDownProps){
 
     return (
     <>
-        <div className="absolute w-[255px] h-[37px] top-[230px] left-[123px] rounded-[5px] border-[2px] border-blue bg-white resize-none">
+        <div className="absolute flex w-[255px] h-[37px] top-[230px] left-[123px] rounded-[5px] border-[2px] border-blue bg-white resize-none items-center justify-center">
             <textarea
                 className="absolute w-[214px] h-[21px] top-[5px] left-[13px] text-black font-pretendard font-semibold resize-none overflow-hidden"
                 value={selectedMajor}
                 placeholder="ex) 컴퓨터공학과"
+                readOnly
             />
             <button  onClick={onToggle} className="absolute top-[9.77px] right-[8.3px]">
                 <img src={DropDown} alt="드롭다운메뉴" />
