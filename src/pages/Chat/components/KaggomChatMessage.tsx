@@ -6,21 +6,21 @@ interface KaggomChatProps {
 }
 // { chat }: KaggomChatProps
 
-const KaggomChatMessage = ({chat}:KaggomChatProps)=>{
+const KaggomChatMessage = ({ chat }: KaggomChatProps) => {
     return (
-        <div className="relative h-[63px] w-[380px]">
+        <div className="flex flex-row mt-8 ml-2"> {/* mt-4로 여백 조정 */}
             <img 
                 src={Kaggom} 
                 alt="kaggom" 
-                className="absolute top-[7px] left-[22px]" 
+                className="mr-2" // 이미지 오른쪽 여백 추가
             />
-            <div className="absolute top-[11px] left-[74px] bg-white rounded-[20px] px-[12px] py-[8px]"
+            <div className="flex bg-white rounded-[20px] px-[12px] py-[8px]"
                 style={{
-                    border: '1px solid #E4E1E1', // border 스타일, 두께, 색상 적용
+                    border: '1px solid #E4E1E1', // border 스타일 적용
                     maxWidth: '286px'
                 }}>
                 <p
-                    className="font-semibold text-left"
+                    className="font-semibold text-left flex-wrap"
                     style={{
                         fontFamily: 'Pretendard',
                         fontSize: '12px',
@@ -34,6 +34,7 @@ const KaggomChatMessage = ({chat}:KaggomChatProps)=>{
             </div>
         </div>
     );
-}
+};
+
 
 export default KaggomChatMessage;

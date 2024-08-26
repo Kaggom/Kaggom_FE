@@ -3,12 +3,12 @@ interface UserChatProps {
 }
 // { chat }: KaggomChatProps
 
-const UserChatMessage: React.FC<UserChatProps> = ({ chat }) =>  {
+const UserChatMessage: React.FC<UserChatProps> = ({ chat }) => {
     return (
-        <div className="relative h-[63px] w-[380px]">
-            <div className="absolute top-[11px] right-[21px] bg-[#E4E1E1] rounded-[20px] px-[12px] py-[8px]"
+        <div className="flex justify-end mt-8 mr-2"> {/* justify-end로 오른쪽 정렬 */}
+            <div className="bg-[#E4E1E1] rounded-[20px] px-[12px] py-[8px]"
                 style={{
-                    border: '1px solid #E4E1E1', // border 스타일, 두께, 색상 적용
+                    border: '1px solid #E4E1E1', // border 스타일 적용
                     maxWidth: '286px'
                 }}>
                 <p

@@ -23,18 +23,10 @@ const AuthCallback = () => {
     }, []);
 
     return (
-        <div className = "absolute flex-auto bg-white text-blue font-pretendard font-bold"
-                style={{
-                    width: '450px',
-                    height: '100%', // 높이를 화면의 100%로 설정합니다.
-                    display: 'flex', // Flexbox 레이아웃을 사용합니다.
-                    flexDirection: 'column',
-                    // border: '1px solid black'
-                }}
-            >
-        <div>
+        <div 
+        className="flex flex-col h-screen w-full  bg-white text-blue font-pretendard font-bold" // 전체 높이와 너비를 설정
+    >
             <h1>Google 인증 중...</h1>
-        </div>
         </div>
     );
 };

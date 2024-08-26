@@ -54,14 +54,14 @@ function UserSetting() {
                 학과와 학년 정보를 기입해주세요.
             </h1>
             
-            <div className="flex flex-col items-start mb-6 w-full max-w-md px-6">
+            <div className="flex flex-row items-start mb-6 w-full max-w-md px-6 gap-5">
                 <h2 className="font-semibold text-[20px] font-pretendard text-black mb-2">
                     학과
                 </h2>
                 <MajorDropDown selectedMajor={major} onMajorChange={handleMajorChange} />
             </div>
 
-            <div className="flex flex-col items-start mb-6 w-full max-w-md px-6">
+            <div className="flex flex-row items-start mb-6 w-full max-w-md px-6 gap-5">
                 <h2 className="font-semibold text-[20px] font-pretendard text-black mb-2">
                     학년
                 </h2>

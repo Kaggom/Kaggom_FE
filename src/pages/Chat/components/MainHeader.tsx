@@ -1,7 +1,7 @@
 function MainHeader() {
     return(
-        <div className="relative w-[381px] h-[91px] flex-shrink-1 flex bg-white items-center justify-center">
-            <p className="text-center"
+        <div className="flex w-[100%] h-[91px] flex-shrink-1  bg-white items-center justify-center">
+            <p className="ml-[28px]"
                 style={{
                     fontFamily: '"Rounded Mplus 1c Bold"',
                     fontSize: '30px',
