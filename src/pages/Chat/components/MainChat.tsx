@@ -6,12 +6,9 @@ import axios from 'axios';
 
 function MainChat() {
 
-    const AZURE_ACCESS_KEY = import.meta.env.VITE_AZURE_ACCESS_KEY;
-    // const AZURE_END_POINT = import.meta.env.VITE_AZURE_END_POINT;
-
     const [formattedDate, setFormattedDate] = useState<string>('');
     const [message, setMessage] = useState<string>('');
-    const [messages, setMessages] = useState<{ type: 'user' | 'bot'; text: string }[]>([]);
+    const [messages, setMessages] = useState<{ type: 'user' | 'bot'; text: string; url?:string }[]>([]);
 
     const getFormattedDate = (): string => {
         const today = new Date();
@@ -26,8 +23,6 @@ function MainChat() {
         setFormattedDate(getFormattedDate());
     }, []);
 
-    console.log('API Key:', AZURE_ACCESS_KEY);
-
 
 
     const chatStartApi = async (message:string) => {
@@ -37,6 +32,7 @@ function MainChat() {
 
         
         console.log(requestData)
+        
 
         try {
             const response = await axios.post('/api/search',requestData, {
@@ -47,7 +43,8 @@ function MainChat() {
         });
 
             console.log("chatStartApi response: ", response.data);
-            handleChatMessage({ type: 'bot', text: response.data.response});
+            console.log(response.data.url)
+            handleChatMessage({ type: 'bot', text: response.data.response, url: response.data.url});
             return;
         } catch (error) {
             if (error instanceof Error) {
@@ -68,13 +65,12 @@ function MainChat() {
         }
     };
 
-    const handleChatMessage = (message:{ type: "bot" | "user"; text: string }) => {
+    const handleChatMessage = (message:{ type: "bot" | "user"; text: string; url?:string }) => {
         setMessages((prevState) => {
             return [...prevState, message];
         });
     }
-
-
+    console.log("messages: ", messages)
     return(
         <>
         <div className="relative flex-row w-[100%] h-screen flex-shrink-1 flex-1 overflow-y-auto bg-white">
@@ -93,7 +89,7 @@ function MainChat() {
                     {messages.map((msg, index) => (
                         msg.type === 'user' ? 
                             <UserChatMessage key={index} chat={msg.text} /> :
-                            <KaggomChatMessage key={index} chat={msg.text} />
+                            <KaggomChatMessage key={index} chat={msg.text} url={msg.url}/>
                     ))}
                 </div>
         </div>

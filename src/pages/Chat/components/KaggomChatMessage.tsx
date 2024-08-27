@@ -3,11 +3,16 @@ import Kaggom from '../../../assets/Kaggom.svg'
 
 interface KaggomChatProps {
     chat: string; // 'Text' 대신 'string' 타입 사용
+    url? : string;
 }
 // { chat }: KaggomChatProps
 
-const KaggomChatMessage = ({ chat }: KaggomChatProps) => {
+const KaggomChatMessage = ({ chat, url }: KaggomChatProps) => {
+    console.log("전달받은 ulr:",url)
+
+
     return (
+        <div className = "flex flex-col">
         <div className="flex flex-row mt-8 ml-2"> {/* mt-4로 여백 조정 */}
             <img 
                 src={Kaggom} 
@@ -32,6 +37,12 @@ const KaggomChatMessage = ({ chat }: KaggomChatProps) => {
                     {chat}
                 </p>
             </div>
+        </div>
+        {url && (
+                    <a href={url} className="ml-16 mt-2 text-gray-400 text-[10px] font-bold underline hover:text-blue">
+                        해당 공지로 이동하기
+                    </a>
+                )}
         </div>
     );
 };
