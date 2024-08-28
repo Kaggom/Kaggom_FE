@@ -19,19 +19,20 @@ function GradeDropDown({ selectedGrade, onGradeChange }: GradeDropDownProps){
     };
 
     return (
-    <>
-        <div className="absolute w-[255px] h-[37px] top-[286px] left-[123px] rounded-[5px] border-[2px] border-blue bg-white resize-none z-40">
-            <textarea
-                className="absolute w-[214px] h-[21px] top-[5px] left-[13px] text-black font-pretendard font-semibold resize-none overflow-hidden"
+    <div className="flex flex-col gap-1">
+        <div className="flex w-[255px] h-[37px] top-[286px] left-[123px] rounded-[5px] border-[2px] border-blue bg-white resize-none z-40 items-center justify-center">
+        <textarea
+                className="flex w-[214px] h-[21px] top-[5px] left-[13px] text-black font-pretendard font-semibold resize-none overflow-hidden"
                 value={selectedGrade}
                 placeholder="ex) 1학년"
+                readOnly
             />
-            <button  onClick={onToggle} className="absolute top-[9.77px] right-[8.3px]">
+            <button  onClick={onToggle} className="flex top-[9.77px] right-[8.3px]">
                 <img src={DropDown} alt="드롭다운메뉴" />
             </button>
         </div>
 
-        {isOpen && <div className="absolute top-[321px] left-[123px] inline-block h-[217px] w-[255px] z-50">
+        <div className="absoulte top-[265px] left-[123px] inline-block z-50">
                 {isOpen && (
                 <div className="w-[100%] h-[100%] inline-block mr-2 overflow-y-scroll border-[2px] border-blue rounded-[5px] bg-white ">
                     <ListItem onClick={onOptionClicked("1학년")}>1학년</ListItem>
@@ -44,9 +45,9 @@ function GradeDropDown({ selectedGrade, onGradeChange }: GradeDropDownProps){
                 </div>
             )}
         </div>
-    }
 
-    </>
+
+    </div>
     );
 }
 

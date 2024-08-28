@@ -19,8 +19,8 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="flex h-screen justify-center items-center">
-        <main className="flex w-[381px] flex-col justify-center items-center ">
+      <div className="flex h-screen">
+        <main className="flex-grow flex flex-col ">
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/chat" element={<Chat />} />

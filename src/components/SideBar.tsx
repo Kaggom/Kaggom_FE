@@ -8,7 +8,7 @@ import User from "../assets/SideBar/SideBarUser.svg"
 import { useNavigate } from 'react-router-dom';
 
 function SideBar() {
-    const [chat, setChat] = useState<boolean>(true);
+    const [chat, setChat] = useState<boolean>(false);
     const [record, setRecord] = useState<boolean>(false);
     const [user, setUser] = useState<boolean>(false);
 
