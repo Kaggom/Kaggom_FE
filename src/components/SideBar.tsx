@@ -29,7 +29,7 @@ function SideBar() {
 
     // () => 함수(인자)로 써야 인자를 지정가능함
     return (
-        <div className="relative w-[72px] top-0 right-0 h-full bg-white shadow-lg flex">
+        <div className="relative w-[72px] h-full top-0 right-0  bg-white shadow-lg flex">
             <nav className="absolute right-[22px] top-[54px] flex flex-col items-center space-y-[20px] mt-4 justify-center">
                 <button onClick={() =>handleChange('chat')}>
                     <img
