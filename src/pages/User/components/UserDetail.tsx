@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import UserInterest from "./UserInterest";
 
 const UserDetail = () => {
-    const interests = ['유학', '동아리', '공모전', '장학금', '봉사활동'];
+    const interests = ['유학', '동아리', '공모전'];
 
     return (
         <div className="w-full h-screen overflow-y-auto bg-gradient-to-b from-white to-[#EDF1F6] flex flex-col">
@@ -67,7 +67,7 @@ const UserDetail = () => {
             <div className="flex flex-col px-4 mt-4">
                 <h2 className="font-pretendard font-bold text-lg text-black">
                     관심키워드
-                </h2>                    
+                </h2>           
                 <div className="flex flex-wrap mt-2 gap-2">
                     {interests.map((data, index) => (
                         <UserInterest
@@ -76,8 +76,8 @@ const UserDetail = () => {
                         />
                     ))}
                 </div>
+                </div>  
             </div>
-        </div>
     );
 }
 

@@ -21,7 +21,19 @@ function MainChat() {
 
     useEffect(() => {
         setFormattedDate(getFormattedDate());
+        authApi;
     }, []);
+
+    const authApi = async () => {
+        try {
+            const response = await axios.post('https://fnddz5n9-3000.asse.devtunnels.ms/login',);
+            console.log("authApi response: ", response.data);
+            localStorage.setItem('user', JSON.stringify(response.data));
+        } catch (error) {
+            console.error('API 요청 중 오류 발생:', error instanceof Error ? error.message : error);
+            return null;
+        }
+    };
 
 
 

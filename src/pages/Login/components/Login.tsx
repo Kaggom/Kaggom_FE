@@ -37,7 +37,7 @@ function KakaoGoogleLogin() {
 
     const testApi = async () => {
         try {
-            const response = await axios.get('https://fnddz5n9-3000.asse.devtunnels.ms/hello',);
+            const response = await axios.post('https://fnddz5n9-3000.asse.devtunnels.ms/login',);
             console.log("testApi response: ", response.data);
             localStorage.setItem('user', JSON.stringify(response.data));
             setReadyLogin(true);
