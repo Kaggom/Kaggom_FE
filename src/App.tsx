@@ -20,7 +20,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="flex h-screen">
-        <main className="flex-grow flex h-auto overflow-y-auto">
+      <main className="flex-grow flex flex-col ">
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/chat" element={<Chat />} />
