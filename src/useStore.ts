@@ -10,4 +10,6 @@ const useStore = create<StoreState>((set) => ({
     setActiveTab: (tab) => set({ activeTab: tab }),
 }));
 
+
 export default useStore;
+

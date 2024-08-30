@@ -15,7 +15,8 @@ function Chat() {
                 }
             );
             console.log("authApi response: ", response.data);
-            localStorage.setItem('user', JSON.stringify(response.data));
+            window.SNSID = response.data[0].snsid;
+            console.log(window.SNSID);
         } catch (error) {
             console.error('API 요청 중 오류 발생:', error instanceof Error ? error.message : error);
             return null;
