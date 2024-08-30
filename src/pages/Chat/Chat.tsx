@@ -15,7 +15,6 @@ function Chat() {
                 }
             );
             console.log("authApi response: ", response.data);
-            console.log("authApi user response: ", response.data.user);
             window.SNSID = response.data.user.snsid;
             console.log(window.SNSID);
         } catch (error) {
