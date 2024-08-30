@@ -35,7 +35,7 @@ function MainChat() {
         
 
         try {
-            const response = await axios.post('/api/search',requestData, {
+            const response = await axios.post('http://20.41.121.150:8000/search',requestData, {
             headers: {
                 'Content-Type': 'application/json', // JSON 형식으로 보내는 것을 명시
                 // 필요한 경우 추가적인 헤더 설정
