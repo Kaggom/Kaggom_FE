@@ -37,7 +37,7 @@ function MainChat() {
         
 
         try {
-            const response = await axios.post('https://kaggom.online/search',requestData, {
+            const response = await axios.post('https://kaggom.online/chat',requestData, {
             headers: {
                 'Content-Type': 'application/json', // JSON 형식으로 보내는 것을 명시
                 // 필요한 경우 추가적인 헤더 설정
