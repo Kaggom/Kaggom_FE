@@ -13,11 +13,6 @@ export default defineConfig({
             },
             }
           },
-  resolve: {
-    alias: {
-      https: 'agent-base', 
-            },
-          },
 })
 
 
