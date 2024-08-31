@@ -61,6 +61,7 @@ function MainChat() {
             return null; // 에러 발생 시 null 반환
         } finally {
             setIsLoading(false); // 버튼 다시 활성화
+            console.log("로딩 활성화 상태 : ", isLoading)
         }
     }
 

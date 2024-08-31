@@ -13,7 +13,7 @@ const KaggomChatMessage = ({ chat, url }: KaggomChatProps) => {
 
     return (
         <div className = "flex flex-col">
-        <div className="flex flex-row mt-8 ml-2"> {/* mt-4로 여백 조정 */}
+        <div className="flex flex-row mt-4 ml-2"> {/* mt-4로 여백 조정 */}
             <img 
                 src={Kaggom} 
                 alt="kaggom" 
