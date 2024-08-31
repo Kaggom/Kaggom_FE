@@ -47,7 +47,7 @@ function Chat() {
             }
 
             const response = await axios.post(
-                'https://20.41.121.150/new_session',
+                'https://20.41.121.150:443/new_session',
                 { snsid: window.SNSID },
                 axiosConfig
             );
