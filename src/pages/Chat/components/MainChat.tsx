@@ -86,7 +86,7 @@ function MainChat() {
                     {formattedDate}
                 </p>
 
-                <div className="flex flex-col w-full space-y-2"> {/* space-y-2 사용하여 메시지 간격 설정 */}
+                <div className="flex flex-col w-full"> {/* space-y-2 사용하여 메시지 간격 설정 */}
                     <KaggomChatMessage chat="안녕하세요 학사정보챗봇 KAGGOM 입니다!" />
                     {messages.map((msg, index) => (
                         msg.type === 'user' ? 
