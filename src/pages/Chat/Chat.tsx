@@ -38,10 +38,11 @@ function Chat() {
             };
             
             console.log("도메인 주소: ", import.meta.env);
+            console.log("newChatApi에서 snsid : ", window.SNSID);
 
             const response = await axios.post(
                 'https://kaggom.online/new_session',
-                { snsid: window.SNSID },
+                { "snsid": window.SNSID },
                 axiosConfig
             );
 
