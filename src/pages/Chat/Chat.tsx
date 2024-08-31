@@ -47,6 +47,8 @@ function Chat() {
             );
 
             console.log('newChatAPI Response:', response.data);
+            window.SESSION_ID = response.data.session_id
+            console.log('session_id:', window.SESSION_ID);
         } catch (error) {
             console.error('API 요청 중 오류 발생:', error instanceof Error ? error.message : error);
             return null;

@@ -27,6 +27,7 @@ function MainChat() {
 
     const chatStartApi = async (message:string) => {
         const requestData = {
+            session_id: window.SESSION_ID,
             text: message, // 전송할 데이터
             // session_id : window.SNSID,
         };
@@ -36,7 +37,7 @@ function MainChat() {
         
 
         try {
-            const response = await axios.post('https://20.41.121.150/search',requestData, {
+            const response = await axios.post('https://kaggom.online/search',requestData, {
             headers: {
                 'Content-Type': 'application/json', // JSON 형식으로 보내는 것을 명시
                 // 필요한 경우 추가적인 헤더 설정
