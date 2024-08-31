@@ -8,6 +8,7 @@ function MainChat() {
 
     const [formattedDate, setFormattedDate] = useState<string>('');
     const [message, setMessage] = useState<string>('');
+    const [isLoading, setIsLoading] = useState(false);
     const [messages, setMessages] = useState<{ type: 'user' | 'bot'; text: string; url?:string }[]>([]);
 
     const getFormattedDate = (): string => {
@@ -26,6 +27,8 @@ function MainChat() {
 
 
     const chatStartApi = async (message:string) => {
+        setIsLoading(true);
+
         const requestData = {
             session_id: window.SESSION_ID,
             text: message, // 전송할 데이터
@@ -33,7 +36,7 @@ function MainChat() {
         };
 
         
-        console.log(requestData)
+        console.log("requestDate : ", requestData)
         
 
         try {
@@ -56,10 +59,13 @@ function MainChat() {
             }
             console.error("API 요청 중 오류 발생:", error);
             return null; // 에러 발생 시 null 반환
+        } finally {
+            setIsLoading(false); // 버튼 다시 활성화
         }
     }
 
     const handleSubmit = (e: FormEvent): void => {
+        console.log("handlesubmit : 여기가 안되나?")
         e.preventDefault();
         if (message.trim()) {
             handleChatMessage({ type: 'user', text: message }); 
@@ -72,7 +78,10 @@ function MainChat() {
             return [...prevState, message];
         });
     }
+
     console.log("messages: ", messages)
+
+
     return(
         <>
         <div className="relative flex-row w-[100%] h-screen flex-shrink-1 flex-1 overflow-y-auto bg-white">
@@ -103,9 +112,18 @@ function MainChat() {
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="메시지를 입력하세요"
+                disabled = {isLoading} 
             />
-            <button onClick={() => chatStartApi(message)}
-                    type="submit" className="ml-2 flex items-center">
+            <button className={`ml-2 flex items-center ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    onClick={(e) => {
+                        if (!isLoading) {
+                            chatStartApi(message);
+                        } else {
+                            e.preventDefault(); // isLoading 상태일 때는 아무 동작도 하지 않음
+                        }
+                    }}
+                    type="submit"
+                    >
                 <img src={SendMessage} alt="Send" width="27" height="27" />
             </button>
         </form>

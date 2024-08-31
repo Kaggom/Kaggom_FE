@@ -22,7 +22,7 @@ const InterestButton = ({interest, onInterestChange}:Props) => {
         <button 
             onClick={handleClick} 
             className={`w-[86px] h-[41px] rounded-[100px] font-pretendard font-semibold text-[17px] ${
-                isClicked ? 'bg-[#C6CFED] text-[#616573]' : 'bg-blue text-white'
+                !isClicked ? 'bg-[#C6CFED] text-[#616573]' : 'bg-blue text-white'
             }`}
         >
             <p>{interest}</p>
