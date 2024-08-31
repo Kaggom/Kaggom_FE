@@ -33,18 +33,15 @@ function Chat() {
     // newChatApi 함수 정의
     const newChatApi = async () => {
         try {
-            const axiosConfig: AxiosRequestConfigWithAgent = {
+            const axiosConfig = {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-            };
-
-            if (typeof window === 'undefined') {
-                // Node.js 환경일 때만 https.Agent 사용
-                axiosConfig.httpsAgent = new https.Agent({
+                httpsAgent: new https.Agent({
                     rejectUnauthorized: false, // SSL 인증서 검증을 무시하도록 설정
-                });
-            }
+                }),
+            };
+            
 
             const response = await axios.post(
                 'https://20.41.121.150:443/new_session',
