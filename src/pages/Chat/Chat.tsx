@@ -40,7 +40,7 @@ function Chat() {
             console.log("도메인 주소: ", import.meta.env);
 
             const response = await axios.post(
-                `${import.meta.env.VITE_BASE_URL}new_session`,
+                'https://kaggom.online/new_session',
                 { snsid: window.SNSID },
                 axiosConfig
             );
