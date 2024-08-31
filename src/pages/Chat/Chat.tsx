@@ -32,14 +32,14 @@ function Chat() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                httpsAgent: new https.Agent({
-                    rejectUnauthorized: false, // SSL 인증서 검증을 무시하도록 설정
-                }),
+                // httpsAgent: new https.Agent({
+                //     rejectUnauthorized: false, // SSL 인증서 검증을 무시하도록 설정
+                // }),
             };
             
 
             const response = await axios.post(
-                'https://20.41.121.150:443/new_session',
+                `${import.meta.env.VITE_BASE_URL}/new_session`,
                 { snsid: window.SNSID },
                 axiosConfig
             );
