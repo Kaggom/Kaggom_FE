@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import MainChat from "./components/MainChat";
 import MainHeader from "./components/MainHeader";
-import axios from "axios";
+import axios, { AxiosRequestConfig } from 'axios';
 import https from 'https';
 
 function Chat() {
@@ -24,27 +24,40 @@ function Chat() {
         }
     };
 
+    // AxiosRequestConfig 확장
+    interface AxiosRequestConfigWithAgent extends AxiosRequestConfig {
+        httpsAgent?: https.Agent; // httpsAgent 속성 추가
+    }
+
+
+    // newChatApi 함수 정의
     const newChatApi = async () => {
         try {
-            const response = await axios.post('https://20.41.121.150/new_session',
-                {
-                    snsid: window.SNSID
+            const axiosConfig: AxiosRequestConfigWithAgent = {
+                headers: {
+                    'Content-Type': 'application/json',
                 },
-                {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    httpsAgent: new https.Agent({
-                        rejectUnauthorized: false, // SSL 인증서 검증을 무시하도록 설정
-                    }),
-                }
-                );
-                console.log('newChatAPI Response:', response.data);
+            };
+
+            if (typeof window === 'undefined') {
+                // Node.js 환경일 때만 https.Agent 사용
+                axiosConfig.httpsAgent = new https.Agent({
+                    rejectUnauthorized: false, // SSL 인증서 검증을 무시하도록 설정
+                });
+            }
+
+            const response = await axios.post(
+                'https://20.41.121.150/new_session',
+                { snsid: window.SNSID },
+                axiosConfig
+            );
+
+            console.log('newChatAPI Response:', response.data);
         } catch (error) {
             console.error('API 요청 중 오류 발생:', error instanceof Error ? error.message : error);
             return null;
         }
-    }
+    };
 
     useEffect(() => {
         authApi(); // useEffect 안에서 authApi 호출
