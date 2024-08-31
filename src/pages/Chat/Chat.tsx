@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import MainChat from "./components/MainChat";
 import MainHeader from "./components/MainHeader";
 import axios from 'axios';
-import https from 'https';
+
 
 function Chat() {
 
