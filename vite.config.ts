@@ -15,10 +15,7 @@ export default defineConfig({
           },
   resolve: {
     alias: {
-      stream: 'stream-browserify',
       https: 'agent-base', 
-              // comment above line and uncomment below line if it doesnot work
-              //     http:'agent-base',
             },
           },
 })
