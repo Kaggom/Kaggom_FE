@@ -54,8 +54,16 @@ function Chat() {
     };
 
     useEffect(() => {
-        authApi(); // useEffect 안에서 authApi 호출
-        newChatApi();
+        const initializeChat = async () => {
+            try {
+                await authApi(); // authApi가 완료될 때까지 대기
+                await newChatApi(); // authApi가 완료된 후에 newChatApi 호출
+            } catch (error) {
+                console.error('초기화 과정에서 오류 발생:', error);
+            }
+        };
+    
+        initializeChat();
     }, []);
 
     return (
