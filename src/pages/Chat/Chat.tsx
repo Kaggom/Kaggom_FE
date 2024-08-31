@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import MainChat from "./components/MainChat";
 import MainHeader from "./components/MainHeader";
-import axios, { AxiosRequestConfig } from 'axios';
+import axios from 'axios';
 import https from 'https';
 
 function Chat() {
@@ -23,11 +23,6 @@ function Chat() {
             return null;
         }
     };
-
-    // AxiosRequestConfig 확장
-    interface AxiosRequestConfigWithAgent extends AxiosRequestConfig {
-        httpsAgent?: https.Agent; // httpsAgent 속성 추가
-    }
 
 
     // newChatApi 함수 정의
