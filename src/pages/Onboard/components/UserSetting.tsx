@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MajorDropDown from "./MajorDropDown";
 import GradeDropDown from "./GradeDropDown";
 import InterestButton from "./InterestButton";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function UserSetting() {
     const interests = ['유학', '동아리', '공모전', '장학금', '봉사활동', '졸업', '휴학', '행사'];
@@ -42,9 +43,44 @@ function UserSetting() {
             alert("필수 정보를 모두 입력해주세요.");
             return;
         }
-
+        onboardApi();
         navigate('/chat');
     }
+
+
+    // onboardApi 함수 정의
+    const onboardApi = async () => {
+        try {
+            const axiosConfig = {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            };
+            
+            console.log("도메인 주소: ", import.meta.env);
+            console.log("newChatApi에서 snsid : ", window.SNSID);
+
+            const response = await axios.post(
+                'https://kaggom.online/new_session',
+                { 
+                    "snsid": window.SNSID,
+                    "name": window.NAME,
+                    "email": window.EMAIL,
+                    "department": major,
+                    "year": grade,
+                    "keywords": interest
+                },
+                axiosConfig
+            );
+
+            console.log('newChatAPI Response:', response.data);
+            window.SESSION_ID = response.data.session_id
+            console.log('session_id:', window.SESSION_ID);
+        } catch (error) {
+            console.error('API 요청 중 오류 발생:', error instanceof Error ? error.message : error);
+            return null;
+        }
+    };
 
     console.log(interest)
 
