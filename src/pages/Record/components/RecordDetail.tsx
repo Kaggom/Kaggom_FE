@@ -47,7 +47,7 @@ const RecordDetail = () => {
             const todayChats: Array<{ user_message: string, bot_response: string }> = [];
             const otherChats: Array<{ user_message: string, bot_response: string }> = [];
 
-            response.data.forEach((data: SessionData) => {
+            response.data.sessions.forEach((data: SessionData) => {
                 if (isToday(data.created_at)) {
                     todayChats.push(...data.chat_history);
                 } else {
