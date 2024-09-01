@@ -1,10 +1,54 @@
 import Header from "./Header";
 import Profile from "../../../assets/User/profile.webp"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import UserInterest from "./UserInterest";
+import { useAuthStore } from "../../../useLogin";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const UserDetail = () => {
-    const interests = ['유학', '동아리', '공모전'];
+    // const interests = ['유학', '동아리', '공모전'];
+    const {login, isAuthenticated} = useAuthStore();
+    const navigate = useNavigate();
+    const [name, setName] = useState<string>('');
+    const [email, setEmail] = useState<string>('');
+    const [major, setMajor] = useState<string>('');
+    // const [doubleMajor, setDoubleMajor] = useState<string>('');
+    // const [minor, setMinor] = useState<string>('');
+    const [year, setYear] = useState<string>('');
+    const [keywords, setKeywords] = useState<string[]>([]);
+
+    const userApi = async () => {
+        // logined가 false이거나 존재하지 않을 때 리다이렉트
+        if (isAuthenticated || isAuthenticated === null ) {
+            login();
+        } else {
+            alert("로그인부터 해주세요");
+            navigate('/');
+        }
+        
+        try {
+            const snsid = window.SNSID
+            const response = await axios.post(`https://kaggom.online/new_session/${snsid}`,
+                {},
+                {}
+            );
+            console.log("userApi response: ", response.data);
+
+            setName(response.data.name);
+            setEmail(response.data.email);
+            setMajor(response.data.department);
+            setYear(response.data.year);
+            setKeywords(response.data.keywords);
+        } catch (error) {
+            console.error('API 요청 중 오류 발생:', error instanceof Error ? error.message : error);
+            return null;
+        }
+    };
+
+    useEffect(() => {
+        userApi();
+    }, []);
 
     return (
         <div className="w-full h-screen overflow-y-auto bg-gradient-to-b from-white to-[#EDF1F6] flex flex-col">
@@ -12,10 +56,10 @@ const UserDetail = () => {
             <div className="flex flex-col justify-center items-center px-4">
                 <img src={Profile} alt="프로필" className=" w-[70px] h-[70px]" />
                 <span className="mt-2 font-pretendard font-bold text-base text-black">
-                    김홍익
+                    {name}
                 </span>
                 <span className="font-pretendard font-normal text-sm text-black">
-                    홍익대 서울캠 3학년
+                    홍익대 서울캠 {year}
                 </span>
                 <Link
                     to="/user/edit"
@@ -33,7 +77,7 @@ const UserDetail = () => {
                 <h3 className="flex justify-between mt-4 text-base font-pretendard font-medium text-black">
                     이메일
                     <p className="text-sm">
-                        hongiklee@gmail.com
+                        {email}
                     </p>
                 </h3>
                 <hr className="mt-5 w-full border border-[#E4E1E1]" />
@@ -46,13 +90,13 @@ const UserDetail = () => {
                 <h3 className="flex justify-between mt-4 text-base font-pretendard font-medium text-black">
                     주전공
                     <p className="text-sm">
-                        컴퓨터공학과
+                        {major}
                     </p>
                 </h3>
                 <h3 className="flex justify-between mt-2 text-base font-pretendard font-medium text-black">
                     복수전공
                     <p className="text-sm">
-                        경영학부 경영학과
+                        산업데이터공학과
                     </p>
                 </h3>
                 <h3 className="flex justify-between mt-2 text-base font-pretendard font-medium text-black">
@@ -69,7 +113,7 @@ const UserDetail = () => {
                     관심키워드
                 </h2>           
                 <div className="flex flex-wrap mt-2 gap-2">
-                    {interests.map((data, index) => (
+                    {keywords.map((data, index) => (
                         <UserInterest
                             key={index}
                             interest={data}
