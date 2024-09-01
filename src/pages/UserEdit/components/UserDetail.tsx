@@ -58,8 +58,11 @@ const UserDetail = () => {
             console.log("snsid : ", window.SNSID)
             const response = await axios.patch(`https://kaggom.online/user/${snsid}`,
                 {
-                    "department": {major},
-                    "keywords": {interest}  
+                    "name": window.NAME,
+                    "email": window.EMAIL,
+                    "department": major,
+                    "year": year,
+                    "keywords": interest
                 },
                 {}
             );
