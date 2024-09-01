@@ -9,7 +9,7 @@ function Chat() {
     console.log("token : ", document.cookie);
     const authApi = async () => {
         try {
-            const response = await axios.post('https://fnddz5n9-3000.asse.devtunnels.ms/login',
+            const response = await axios.post('https://kaggom.store/login',
                 {},
                 {
                     withCredentials: true

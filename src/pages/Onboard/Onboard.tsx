@@ -11,7 +11,7 @@ function Onboard() {
     //원래는 Onboard.tsx에서 실행되어야 하는데 상태관리를 잘 몰라서..
     const authApi = async () => {
         try {
-            const response = await axios.post('https://fnddz5n9-3000.asse.devtunnels.ms/login',
+            const response = await axios.post('https://kaggom.store/login',
                 {},
                 {
                     withCredentials: true

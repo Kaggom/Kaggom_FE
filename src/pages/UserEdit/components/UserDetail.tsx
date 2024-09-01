@@ -1,18 +1,23 @@
 import Profile from "../../../assets/User/profile.webp"
 // import { Link } from "react-router-dom";
 import UserInterest from "./UserInterest";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Plus from "../../../assets/User/plus.svg";
 import { useNavigate } from "react-router-dom";
 import Header from "./Header";
+import axios from "axios";
 
 
 const UserDetail = () => {
-    const interests = ['유학', '동아리', '공모전'];
-    const [major, setMajor] = useState<string>('컴퓨터공학과');
-    const [doubleMajor, setDoubleMajor] = useState<string>('경영학부 경영학과');
+    // const interests = ['유학', '동아리', '공모전'];
+    const [name, setName] = useState<string>('');
+    const [email, setEmail] = useState<string>('');
+    const [year, setYear] = useState<string>('');
+    
+    const [major, setMajor] = useState<string>('');
+    const [doubleMajor, setDoubleMajor] = useState<string>('산업데이터공학과');
     const [minor, setMinor] = useState<string>('국어교육과');
-    const [interest, setInterest] = useState<string[]>(interests);
+    const [interest, setInterest] = useState<string[]>([]);
     const [onToggle, setOnToggle] = useState<boolean>(false);
     const [newInterest, setNewInterest] = useState<string>('');
     const navigate = useNavigate();
@@ -26,6 +31,51 @@ const UserDetail = () => {
             setOnToggle(false)
         }
     };
+
+    const userEditApi = async () => {
+        try {
+            const snsid = window.SNSID
+            console.log("snsid : ", window.SNSID)
+            const response = await axios.get(`https://kaggom.online/user/${snsid}`,
+                {},
+            );
+            console.log("userApi response: ", response.data);
+
+            setName(response.data.name);
+            setEmail(response.data.email);
+            setMajor(response.data.department);
+            setYear(response.data.year);
+            setInterest(response.data.keywords);
+        } catch (error) {
+            console.error('API 요청 중 오류 발생:', error instanceof Error ? error.message : error);
+            return null;
+        }
+    };
+
+    const userEditSendApi = async () => {
+        try {
+            const snsid = window.SNSID
+            console.log("snsid : ", window.SNSID)
+            const response = await axios.put(`https://kaggom.online/user/${snsid}`,
+                {
+                    "department": {major},
+                    "keywords": {interest}  
+                },
+                {}
+            );
+            console.log("userApi response: ", response.data);
+
+            setMajor(response.data.department);
+            setInterest(response.data.keywords);
+        } catch (error) {
+            console.error('API 요청 중 오류 발생:', error instanceof Error ? error.message : error);
+            return null;
+        }
+    };
+
+    useEffect(() => {
+        userEditApi();
+    }, []);
 
 
 
@@ -42,6 +92,7 @@ const UserDetail = () => {
     }
 
     const handleNavUser = () => {
+        userEditSendApi();
         navigate('/user');
     }
 
@@ -55,10 +106,10 @@ const UserDetail = () => {
             <div className="flex flex-col justify-center items-center px-4">
                 <img src={Profile} alt="프로필" className="mt-7 w-[70px] h-[70px]" />
                 <span className="mt-2 font-pretendard font-bold text-base text-black">
-                    김홍익
+                    {name}
                 </span>
                 <span className="font-pretendard font-normal text-sm text-black">
-                    홍익대 서울캠 3학년
+                    홍익대 서울캠 {year}
                 </span>
                 <hr className="mt-1 w-full  border border-[#E4E1E1]" />
             </div>
@@ -70,7 +121,7 @@ const UserDetail = () => {
                 <h3 className="flex justify-between flex-row mt-4 font-pretendard font-medium text-base text-black">
                     이메일
                     <p className="text-sm">
-                        hongiklee@gmail.com
+                        {email}
                     </p>
                 </h3>
                 <hr className="mt-5 w-full  border border-[#E4E1E1] " />

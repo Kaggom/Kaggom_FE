@@ -61,7 +61,7 @@ function UserSetting() {
             console.log("onboardApi에서 snsid : ", window.SNSID);
 
             const response = await axios.post(
-                'https://kaggom.online/new_session',
+                'https://kaggom.online/onboarding',
                 { 
                     "snsid": window.SNSID,
                     "name": window.NAME,

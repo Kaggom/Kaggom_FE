@@ -29,7 +29,7 @@ function KakaoGoogleLogin() {
     // };
     const googleLoginApi = () => {
         // Google OAuth 인증 URL
-        const googleAuthUrl = 'https://fnddz5n9-3000.asse.devtunnels.ms/auth/google';
+        const googleAuthUrl = 'https://kaggom.store/auth/google';
         
         // 사용자를 Google 인증 페이지로 리다이렉트
         window.location.href = googleAuthUrl;
@@ -37,7 +37,7 @@ function KakaoGoogleLogin() {
 
     const testApi = async () => {
         try {
-            const response = await axios.post('https://fnddz5n9-3000.asse.devtunnels.ms/login',);
+            const response = await axios.post('https://kaggom.store/login',);
             console.log("testApi response: ", response.data);
             localStorage.setItem('user', JSON.stringify(response.data));
             setReadyLogin(true);
