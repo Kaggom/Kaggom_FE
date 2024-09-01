@@ -58,7 +58,7 @@ function UserSetting() {
             };
             
             console.log("도메인 주소: ", import.meta.env);
-            console.log("newChatApi에서 snsid : ", window.SNSID);
+            console.log("onboardApi에서 snsid : ", window.SNSID);
 
             const response = await axios.post(
                 'https://kaggom.online/new_session',
