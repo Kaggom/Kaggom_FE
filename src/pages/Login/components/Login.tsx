@@ -1,20 +1,20 @@
 import KaggomLogo from "../../../assets/KaggomLogo.svg"
 import KakaoLoginImage from "../../../assets/Login&Onboard/kakao_login.png"
 import GoogleLoginImage from "../../../assets/Login&Onboard/google_login.png"
-import axios from "axios"
+// import axios from "axios"
 
-import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
+// import { useEffect, useState } from "react"
+// import { useNavigate } from "react-router-dom"
 
 function KakaoGoogleLogin() {
-    const [readyLogin, setReadyLogin] = useState(false);
-    const navigate = useNavigate();
+    // const [readyLogin, setReadyLogin] = useState(false);
+    // const navigate = useNavigate();
 
-    useEffect(() => {
-        if (readyLogin) {
-            navigate('/chat');
-        }
-    }, [readyLogin]);
+    // useEffect(() => {
+    //     if (readyLogin) {
+    //         navigate('/chat');
+    //     }
+    // }, [readyLogin]);
 
     // const googleLoginApi = async () => {
     //     try {
@@ -36,15 +36,17 @@ function KakaoGoogleLogin() {
     };
 
     const testApi = async () => {
-        try {
-            const response = await axios.post('https://kaggom.store/login',);
-            console.log("testApi response: ", response.data);
-            localStorage.setItem('user', JSON.stringify(response.data));
-            setReadyLogin(true);
-        } catch (error) {
-            console.error('API 요청 중 오류 발생:', error instanceof Error ? error.message : error);
-            return null;
-        }
+        // try {
+        //     const response = await axios.post('https://kaggom.store/login',);
+        //     console.log("testApi response: ", response.data);
+        //     localStorage.setItem('user', JSON.stringify(response.data));
+        //     setReadyLogin(true);
+        // } catch (error) {
+        //     console.error('API 요청 중 오류 발생:', error instanceof Error ? error.message : error);
+        //     return null;
+        // }습
+        alert("아직 구현하지 못했습니다. 구글로그인으로 진행해주세요.")
+        return
     };
 
     return (
