@@ -1,15 +1,15 @@
 import Header from "./Header";
 import Profile from "../../../assets/User/profile.webp"
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import UserInterest from "./UserInterest";
-import { useAuthStore } from "../../../useLogin";
+// import { useAuthStore } from "../../../useLogin";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
 const UserDetail = () => {
     // const interests = ['유학', '동아리', '공모전'];
-    const {login, isAuthenticated} = useAuthStore();
-    const navigate = useNavigate();
+    // const {login, isAuthenticated} = useAuthStore();
+    // const navigate = useNavigate();
     const [name, setName] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [major, setMajor] = useState<string>('');
