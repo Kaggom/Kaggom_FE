@@ -20,6 +20,22 @@ function MainChat() {
         return `${year}년 ${month}월 ${day}일`;
     };
 
+    const [isVoiceBotOn, setIsVoiceBotOn] = useState(false);
+
+    const toggleVoiceBot = () => {
+        setIsVoiceBotOn((prev) => !prev);
+        if (!isVoiceBotOn) {
+            // 보이스봇 켜짐 처리
+            alert("보이스채팅을 시작합니다.");
+            console.log("보이스봇이 켜졌습니다.");
+        } else {
+            // 보이스봇 꺼짐 처리
+            alert("보이스채팅을 종료합니다.");
+            console.log("보이스봇이 꺼졌습니다.");
+        }
+    };
+
+
     useEffect(() => {
         setFormattedDate(getFormattedDate());
     }, []);
@@ -128,7 +144,21 @@ function MainChat() {
                 <img src={SendMessage} alt="Send" width="27" height="27" />
             </button>
         </form>
-        </>
+        <div className='flex flex-row bg-[#EDF1F6] items-center'>
+            <h1 className="text-[12px] font-semibold text-[#9B9B9B] font-pretendard ml-4 mb-4">보이스채팅 {isVoiceBotOn ? 'ON' : 'OFF'}</h1>
+                <label className="flex items-center cursor-pointer">
+                    <input
+                        type="checkbox"
+                        checked={isVoiceBotOn}
+                        onChange={toggleVoiceBot}
+                        className="hidden"
+                    />
+                    <div className={`w-12 h-8 flex items-center mb-4 ml-2 bg-[#B8B7B7] rounded-full p-1 transition-colors duration-300 ${isVoiceBotOn ? 'bg-white' : 'bg-[#B8B7B7]'}`}>
+                        <div className={` bg-blue w-5 h-5 rounded-full shadow-md transform transition-transform duration-300 ${isVoiceBotOn ? 'translate-x-5' : ''}`} />
+                    </div>
+                </label>
+        </div>
+    </>
     );
 }
 export default MainChat;
