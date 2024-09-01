@@ -29,7 +29,8 @@ const UserDetail = () => {
         
         try {
             const snsid = window.SNSID
-            const response = await axios.post(`https://kaggom.online/new_session/${snsid}`,
+            console.log("snsid : ", window.SNSID)
+            const response = await axios.post(`https://kaggom.online/user/${snsid}`,
                 {},
                 {}
             );
