@@ -20,12 +20,12 @@ const UserDetail = () => {
 
     const userApi = async () => {
         // logined가 false이거나 존재하지 않을 때 리다이렉트
-        if (isAuthenticated || isAuthenticated === null ) {
-            login();
-        } else {
-            alert("로그인부터 해주세요");
-            navigate('/');
-        }
+        // if (isAuthenticated || isAuthenticated === null ) {
+        //     login();
+        // } else {
+        //     alert("로그인부터 해주세요");
+        //     navigate('/');
+        // }
         
         try {
             const snsid = window.SNSID
