@@ -18,11 +18,15 @@ function Onboard() {
                 }
             );
             console.log("authApi response: ", response.data);
-            if (!isAuthenticated) {
+
+
+            // logined가 false이거나 존재하지 않을 때 리다이렉트
+            if (response.data.isLogined || response.data.isLogined === null ) {
+                login();
+            } else {
                 alert("로그인부터 해주세요");
-                return;
+                navigate('/');
             }
-            {response.data.isLogined? login : navigate('/') }
 
             window.SNSID = response.data.user.snsid;
             window.NAME = response.data.user.nick;
