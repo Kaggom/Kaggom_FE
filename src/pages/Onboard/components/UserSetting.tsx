@@ -74,7 +74,7 @@ function UserSetting() {
             );
             console.log('여기까지오나?');
 
-            console.log('newChatAPI Response:', response.data);
+            console.log('onboardApi Response:', response.data);
             window.SESSION_ID = response.data.session_id
             console.log('session_id:', window.SESSION_ID);
         } catch (error) {
