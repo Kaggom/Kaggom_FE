@@ -72,6 +72,7 @@ function UserSetting() {
                 },
                 axiosConfig
             );
+            console.log('여기까지오나?');
 
             console.log('newChatAPI Response:', response.data);
             window.SESSION_ID = response.data.session_id
