@@ -28,11 +28,16 @@ const UserDetail = () => {
         // }
         
         try {
+            // const response = await axios.post('https://kaggom.online/user',
+            //     {},
+            //     {
+            //         params: { snsid: snsid }
+            //     }
+            // );
             const snsid = window.SNSID
             console.log("snsid : ", window.SNSID)
-            const response = await axios.post(`https://kaggom.online/user/${snsid}`,
+            const response = await axios.get(`https://kaggom.online/user/${snsid}`,
                 {},
-                {}
             );
             console.log("userApi response: ", response.data);
 
