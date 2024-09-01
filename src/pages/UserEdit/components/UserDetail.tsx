@@ -56,7 +56,7 @@ const UserDetail = () => {
         try {
             const snsid = window.SNSID
             console.log("snsid : ", window.SNSID)
-            const response = await axios.put(`https://kaggom.online/user/${snsid}`,
+            const response = await axios.patch(`https://kaggom.online/user/${snsid}`,
                 {
                     "department": {major},
                     "keywords": {interest}  

@@ -1,5 +1,7 @@
+import { useEffect} from "react";
 import Header from "./Header";
 import RecordBox from "./RecordBox";
+import axios from "axios";
 
 const Dumy = [
     {userChat : "컴퓨터공학과 최신정보를 알려줘컴퓨터공학과 최신정보컴퓨터공학과 최신정보를 알려줘컴퓨터공학과 최신정보", kaggomChat : "컴퓨터공학과 최신정보는 이것저것이것 저것 저것저것컴퓨터공학과 최신정보는 이것저것이것 저것 저것저것" },
@@ -15,7 +17,61 @@ const Dumy2 = [
     {userChat : "2컴퓨터공학과 최신정보를 알려줘컴퓨터공학과 최신정보", kaggomChat : "컴퓨터공학과 최신정보는 이것저것이것 저것 저것저것" }
 ]
 
+// interface Chat {
+//     user_message : string[];
+//     bot_response : string[];
+//     timestamp : string[];
+// }
+// interface ChatRecord {
+//     id: string;
+//     created_at: string;
+//     interests: string[];
+//     chat_history
+// }
+
 const RecordDetail = () => {
+    // const [todayRecordChat, setTodayRecordChat] = useState<string[]>([]);
+    // const [RecordChat, setRecordChat] = useState<string[]>([]);
+
+    // const isToday = (timestamp: string): boolean => {
+    //     const today = new Date();
+    //     const dateToCheck = new Date(timestamp);
+
+    //     return (
+    //         today.getFullYear() === dateToCheck.getFullYear() &&
+    //         today.getMonth() === dateToCheck.getMonth() &&
+    //         today.getDate() === dateToCheck.getDate()
+    //     );
+    // };
+    
+    const RecordListApi = async () => {
+        try {
+            const response = await axios.get(`https://kaggom.online/sessions/${window.SNSID}`,
+                {});
+            console.log("RecordListApi response: ", response.data);
+            // const todayChats: string[] = [];
+            // const otherChats: string[] = [];
+
+            // response.data.forEach((data:any) => {
+            //     if (isToday(data.timestamp)) {
+            //         todayChats.push(data);
+            //     } else {
+            //         otherChats.push(data);
+            //     }
+            // });
+
+            // setTodayRecordChat(todayChats);
+            // setRecordChat(otherChats);
+        }catch (error) {
+            console.error('API 요청 중 오류 발생:', error instanceof Error ? error.message : error);
+            return null;
+        }
+    };
+
+    useEffect( () => {
+        RecordListApi();
+    }, [])
+
     return (
         <>
         <div className="bg-gradient-to-b from-white to-[#EDF1F6] flex flex-col w-full h-screen overflow-y-auto">
