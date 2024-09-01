@@ -5,7 +5,7 @@ import { useAuthStore } from "../../useLogin";
 import { useNavigate } from "react-router-dom";
 function Onboard() {
 
-    const { isAuthenticated, login, logout } = useAuthStore();
+    const { isAuthenticated, login} = useAuthStore();
     const navigate = useNavigate();
     
     //원래는 Onboard.tsx에서 실행되어야 하는데 상태관리를 잘 몰라서..
