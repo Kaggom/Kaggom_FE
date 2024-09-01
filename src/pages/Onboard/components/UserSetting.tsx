@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import MajorDropDown from "./MajorDropDown";
 import GradeDropDown from "./GradeDropDown";
 import InterestButton from "./InterestButton";
